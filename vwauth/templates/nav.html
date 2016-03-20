@@ -1,0 +1,56 @@
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="{{ url_for('api.home') }}">
+
+      The Virtual Watershed
+
+    </a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    {% if current_user and current_user.is_authenticated() %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-link" href="{{ url_for_security('logout') }}"><i class="fa fa-sign-out"></i></a></li>
+        <li><a class="navbar-link" href="{{ url_for('api.profile') }}">Profile</a></li>
+        <li><a class="navbar-link" href="{{ url_for('api.apikey') }}">API Key</a></li>
+    </ul>
+    {% else %}
+
+
+      {% if security.registerable or security.recoverable or security.confirmabled %}
+        <ul class="nav navbar-nav navbar-right">
+      			{% if current_user.is_authenticated() %}
+      				<li><a href="{{ url_for_security('logout') }}">Logout</a></li>
+              <li><a href="{{ url_for('api.apikey') }}">Generate API Key</a></li>
+      			{% else %}
+      				<li><a href="{{ url_for_security('login') }}">Login</a></li>
+      				{% if security.registerable %}
+      				<li><a href="{{ url_for_security('register') }}">Register</a></li>
+      				{% endif %}
+      				{% if security.recoverable %}
+      				<li><a href="{{ url_for_security('forgot_password') }}">Forgot password</a></li>
+      				{% endif %}
+      				{% if security.confirmable %}
+      				<li><a href="{{ url_for_security('send_confirmation') }}">Confirm account</a></li>
+      				{% endif %}
+      			{% endif %}
+            </ul>
+     {% endif %}
+
+
+    {% endif %}
+
+
+  </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>

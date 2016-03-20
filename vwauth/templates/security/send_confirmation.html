@@ -1,0 +1,33 @@
+
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+{% extends "layout.html" %}
+{% set form = send_confirmation_form %}
+{% block content %}
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+      <h3>Resend confirmation instructions</h3>
+      <div class="well">
+          <form action="{{ url_for_security('send_confirmation') }}" method="POST" name="send_confirmation_form">
+              {{ form.csrf_token }}
+              <div class="form-group {% if form.errors.email %} has-error {% endif %}">
+                  <label for="email" class="control-label">{{form.email.label}}</label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="example@gmail.com">
+                  {% if form.errors.email %}
+                    {% for err in form.errors.email%}
+                      <span class="help-block">{{err}}</span>
+                    {% endfor %}
+                  {% endif %}
+              </div>
+
+              <button type="submit" class="btn btn-success btn-block">Send</button>
+          </form>
+      </div>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

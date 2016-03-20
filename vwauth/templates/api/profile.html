@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <td>
+      E-mail
+    </td>
+    <td>
+      {{user.email}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Name
+    </td>
+    <td>
+      {{user.name}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Affiliation
+    </td>
+    <td>
+      {{user.affiliation}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      State
+    </td>
+    <td>
+      {{user.state}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      City
+    </td>
+    <td>
+      {{user.city}}
+    </td>
+  </tr>
+
+
+
+</table>
+
+
+{% endblock %}

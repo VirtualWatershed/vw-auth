@@ -1,0 +1,27 @@
+{
+  "name": "vw-auth",
+  "homepage": "https://github.com/VirtualWatershed/vw-auth",
+  "authors": [
+    "Moinul Hossain <hossain@nevada.unr.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/static/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "bootswatch-dist": "sandstone"
+  }
+}
