@@ -8,7 +8,7 @@ from vwauth.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, lo
 from vwauth.auth import jwt
 from vwauth.settings import ProdConfig
 from vwauth.datastore import user_datastore
-from vwauth.user.forms import ExtendedRegisterForm
+from vwauth.user.forms import ExtendedRegisterForm, ExtendedConfirmRegisterForm
 
 def create_app(config_object=ProdConfig):
     """An application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
@@ -36,7 +36,8 @@ def register_extensions(app):
     jwt.init_app(app)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
-    security.init_app(app,datastore=user_datastore,confirm_register_form=ExtendedRegisterForm)
+    security.init_app(app, datastore=user_datastore, confirm_register_form=ExtendedConfirmRegisterForm, register_form=ExtendedRegisterForm)
+
     return None
 
 
