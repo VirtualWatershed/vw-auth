@@ -40,13 +40,14 @@ class Config(object):
 
 
     # jwt
+    JWT_SECRET_KEY = config('VWAUTH_JWT_SECRET_KEY','vwplatform')
     JWT_EXPIRATION_DELTA = timedelta(days=config('VWAUTH_JWT_EXPIRATION_DELTA', 30,cast=int))
     JWT_AUTH_URL_RULE ='{base}/auth'.format(base=API_ENDPOINT)
 
     #CSRF
     WTF_CSRF_CHECK_DEFAULT = config('VWAUTH_WTF_CSRF_CHECK_DEFAULT', False,cast=bool)
     WTF_CSRF_ENABLED = config('VWAUTH_WTF_CSRF_ENABLED', False,cast=bool)
-    
+
 class ProdConfig(Config):
     """Production configuration."""
 

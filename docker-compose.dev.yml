@@ -6,7 +6,7 @@ services:
       service: vwauth
     env_file: ./.env.dev
     volumes:
-      - /db:/db
+      - /vwauthdb:/vwauthdb
       # For development thorugh mounting the source dir as a volume
       # This should be path the vwadaptor source code
       # If using windows docker client, first copy the code to
@@ -14,7 +14,7 @@ services:
       #- /home/docker/vw-auth:/var/www/vw-auth
     depends_on:
       - vwmail
-
+    command: python manage.py runserver -h 0.0.0.0 -p 5005
   vwmail:
     extends:
       file: docker-compose.yml
