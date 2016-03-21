@@ -36,6 +36,6 @@ RUN pip install -r requirements/dev.txt
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 RUN bower install
 
-EXPOSE 5000
+EXPOSE ${VWAUTH_PORT}
 
 CMD python manage.py runserver -h ${VWAUTH_HOST} -p ${VWAUTH_PORT}
