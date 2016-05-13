@@ -4,11 +4,12 @@ from flask import Flask, render_template
 
 from vwauth import api
 from vwauth.assets import assets
-from vwauth.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, mail, security
+from vwauth.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, mail, security, session
 from vwauth.auth import jwt
 from vwauth.settings import ProdConfig
 from vwauth.datastore import user_datastore
 from vwauth.user.forms import ExtendedRegisterForm, ExtendedConfirmRegisterForm
+
 
 def create_app(config_object=ProdConfig):
     """An application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
@@ -34,9 +35,11 @@ def register_extensions(app):
     login_manager.init_app(app)
     mail.init_app(app)
     jwt.init_app(app)
+    session.init_app(app)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
-    security.init_app(app, datastore=user_datastore, confirm_register_form=ExtendedConfirmRegisterForm, register_form=ExtendedRegisterForm)
+    security.init_app(app, datastore=user_datastore,
+                      confirm_register_form=ExtendedConfirmRegisterForm, register_form=ExtendedRegisterForm)
 
     return None
 

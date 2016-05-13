@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.security import Security
 from flask_mail import Mail
+from flask.ext.session import Session
 
 bcrypt = Bcrypt()
 csrf_protect = CsrfProtect()
@@ -19,3 +20,4 @@ cache = Cache()
 debug_toolbar = DebugToolbarExtension()
 mail = Mail()
 security = Security()
+session = Session()
