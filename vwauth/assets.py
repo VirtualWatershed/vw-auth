@@ -12,7 +12,7 @@ css = Bundle(
 )
 
 js = Bundle(
-    'libs/jQuery/dist/jquery.js',
+    'libs/jquery/dist/jquery.js',
     'libs/bootswatch-dist/js/bootstrap.min.js',
     'js/plugins.js',
     filters='jsmin',
