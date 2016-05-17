@@ -39,6 +39,10 @@ class Config(object):
     SECURITY_EMAIL_SENDER = config(
         'VWAUTH_SECURITY_EMAIL_SENDER', 'welcome@virtualwatershed.org')
 
+    SECURITY_POST_LOGIN_VIEW = config(
+        'VWAUTH_SECURITY_POST_LOGIN_VIEW', '/')
+    SECURITY_POST_LOGOUT_VIEW = config(
+        'VWAUTH_SECURITY_POST_LOGOUT_VIEW', '/')
     # mail setting
     MAIL_SERVER = config('VWAUTH_MAIL_SERVER', None)
     MAIL_PORT = config('VWAUTH_MAIL_PORT', 25, cast=int)
