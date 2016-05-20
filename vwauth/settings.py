@@ -40,9 +40,12 @@ class Config(object):
         'VWAUTH_SECURITY_EMAIL_SENDER', 'welcome@virtualwatershed.org')
 
     SECURITY_POST_LOGIN_VIEW = config(
-        'VWAUTH_SECURITY_POST_LOGIN_VIEW', '/')
+        'VWAUTH_SECURITY_POST_LOGIN_VIEW', default='/')
     SECURITY_POST_LOGOUT_VIEW = config(
-        'VWAUTH_SECURITY_POST_LOGOUT_VIEW', '/')
+        'VWAUTH_SECURITY_POST_LOGOUT_VIEW', default='/')
+
+    SECURITY_POST_CONFIRM_VIEW = config(
+        'VWAUTH_SECURITY_POST_CONFIRM_VIEW', default='/')
     # mail setting
     MAIL_SERVER = config('VWAUTH_MAIL_SERVER', None)
     MAIL_PORT = config('VWAUTH_MAIL_PORT', 25, cast=int)
@@ -76,6 +79,7 @@ class Config(object):
         SESSION_REDIS = Redis(host=VWAUTH_SESSION_REDIS_HOST,
                               port=VWAUTH_SESSION_REDIS_PORT, db=VWAUTH_SESSION_REDIS_DB)
 
+    VW_HOME = config('VWAUTH_VW_HOME', default='/')
 
 class ProdConfig(Config):
     """Production configuration."""

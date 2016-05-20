@@ -10,11 +10,15 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ url_for('api.home') }}">
-
-      The Virtual Watershed
-
-    </a>
+    {% if config['VW_HOME'] %}
+      <a class="navbar-brand" href="{{ config['VW_HOME'] }}">
+        The Virtual Watershed
+      </a>
+    {% else %}
+      <a class="navbar-brand" href="{{ url_for('api.home') }}">
+        The Virtual Watershed
+      </a>
+    {% endif %}
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
