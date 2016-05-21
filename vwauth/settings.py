@@ -50,6 +50,7 @@ class Config(object):
     MAIL_SERVER = config('VWAUTH_MAIL_SERVER', None)
     MAIL_PORT = config('VWAUTH_MAIL_PORT', 25, cast=int)
     MAIL_USE_SSL = config('VWAUTH_MAIL_USE_SSL', False, cast=bool)
+    MAIL_USE_TLS = config('VWAUTH_MAIL_USE_TLS', False, cast=bool)
     MAIL_USERNAME = config('VWAUTH_MAIL_USERNAME', None)
     MAIL_PASSWORD = config('VWAUTH_MAIL_PASSWORD', None)
 
