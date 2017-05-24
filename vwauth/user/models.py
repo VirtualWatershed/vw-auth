@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """User models."""
+import uuid
 import datetime as dt
 
 from flask.ext.security import UserMixin, RoleMixin
