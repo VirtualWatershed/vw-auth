@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """User models."""
+import uuid
 import datetime as dt
 
 from flask.ext.security import UserMixin, RoleMixin
@@ -10,6 +11,8 @@ roles_users = db.Table('roles_users',
                        db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
                        db.Column('role_id', db.Integer(), db.ForeignKey('roles.id')))
 
+def generate_uuid():
+   return str(uuid.uuid4())
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -29,6 +32,7 @@ class User(UserMixin, db.Model):
     last_login_ip = db.Column(db.String(255))
     current_login_ip = db.Column(db.String(255))
     login_count = db.Column(db.Integer)
+    uuid = db.Column(db.String(255), unique=True, default=generate_uuid)
 
     def __repr__(self):
         return '<models.User[email=%s]>' % self.email
